@@ -1,4 +1,5 @@
-import type { Role } from '>/types';
+import { Role } from '>/types';
+import { certificationCodes } from './certifications';
 
 export const rolesList: Role[] = [
   {
@@ -9,13 +10,13 @@ export const rolesList: Role[] = [
     requirements: [
       {
         scheme_code: 'HVAP',
-        modules_required: [],
+        modules_required: certificationCodes.HVAP,
         min_outcome: 'Pass',
         must_be_valid: true,
       },
       {
         scheme_code: 'OSSC',
-        modules_required: [],
+        modules_required: certificationCodes.OSSC,
         min_outcome: 'Pass',
         must_be_valid: true,
       },
@@ -29,16 +30,17 @@ export const rolesList: Role[] = [
     id: 'offshore-rotational',
     title: 'Offshore Rotational',
     vacancies: 40,
-    schemes: ['OSSC'],
+    schemes: ['OSSC', 'WAHS'],
     requirements: [
       {
         scheme_code: 'OSSC',
-        modules_required: [
-          'sea-survival',
-          'fire',
-          'first-aid',
-          'height-safety',
-        ],
+        modules_required: certificationCodes.OSSC,
+        min_outcome: 'Pass',
+        must_be_valid: true,
+      },
+      {
+        scheme_code: 'WAHS',
+        modules_required: ['WAHS-1'],
         min_outcome: 'Pass',
         must_be_valid: true,
       },
@@ -49,16 +51,16 @@ export const rolesList: Role[] = [
     id: 'vhf-ops',
     title: 'Maritime Communications',
     vacancies: 5,
-    schemes: [],
+    schemes: ['RCOM'],
     requirements: [
-      // If there's a VHF/DSC scheme in your cert data, map it here.
-      // If not, this is a manual check.
+      {
+        scheme_code: 'RCOM',
+        modules_required: certificationCodes.RCOM,
+        min_outcome: 'Pass',
+        must_be_valid: false,
+      },
     ],
-    manual_checks: [
-      'VHF procedure',
-      'DSC alerting',
-      'Distress/urgency/safety traffic conventions',
-    ],
+    manual_checks: [],
   },
   {
     id: 'offshore-safety',
@@ -68,7 +70,7 @@ export const rolesList: Role[] = [
     requirements: [
       {
         scheme_code: 'OSSC',
-        modules_required: [],
+        modules_required: certificationCodes.OSSC,
         min_outcome: 'Pass',
         must_be_valid: true,
       },
@@ -79,16 +81,16 @@ export const rolesList: Role[] = [
     id: 'small-craft',
     title: 'Small Craft / Marine Ops',
     vacancies: 1,
-    schemes: ['SCMO'],
+    schemes: ['SMOC'],
     requirements: [
       {
-        scheme_code: 'SCMO',
-        modules_required: [],
+        scheme_code: 'SMOC',
+        modules_required: certificationCodes.SMOC,
         min_outcome: 'Attended',
         must_be_valid: false,
       },
     ],
-    manual_checks: [], // "willing to get one" = soft requirement
+    manual_checks: [],
   },
   {
     id: 'general',

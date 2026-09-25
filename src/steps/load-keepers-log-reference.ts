@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { parse } from 'csv-parse/sync';
 import iconv from 'iconv-lite';
 import { dataLocations } from '>/config';
-import { SequencerContext } from '>/types';
+import { SequencerContext, RawRow } from '>/types';
 
 export const loadKeepersLogReference = (ctx: SequencerContext) => {
   console.log('Step: loadKeepersLogReference');
@@ -17,12 +17,12 @@ export const loadKeepersLogReference = (ctx: SequencerContext) => {
     skip_empty_lines: true,
   });
 
-  const raw: { keeper_code: string; name: string; idx: number }[] = rows.map(
-    (row, i) => ({
-      keeper_code: row[0] ?? 'Not Found',
-      name: row[1] ?? 'Not Found',
-      idx: i,
-    }),
-  );
+  const data = rows.slice(1);
+
+  const raw: RawRow[] = data.map((row, i) => ({
+    keeper_code: row[0] ?? 'Not Found',
+    name: row[1] ?? 'Not Found',
+    idx: i,
+  }));
   ctx.raw = raw;
 };

@@ -1,7 +1,7 @@
 {
   "name": "personnel-carrow-generator",
   "description": "Parsing, Extraction and Composition scripts of legacy data migration",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Mark Samios",
   "license": "GPL-3.0",
   "type": "module",

@@ -2,7 +2,7 @@
    Vacancies Assignment fills respecting vacancies
 */
 import { dataLocations } from '>/config';
-import type { SequencerContext, RoleScoreEntry } from '>/types';
+import type { SequencerContext } from '>/types';
 
 export const assignRoles = (ctx: SequencerContext) => {
   console.log('Step: assignAll');
@@ -18,7 +18,7 @@ export const assignRoles = (ctx: SequencerContext) => {
       {};
 
     const eligible = Object.entries(scores)
-      .filter(([id, r]) => r.met && remaining[id] > 0)
+      .filter(([id, r]) => r.score > 0 && remaining[id] > 0)
       .sort((a, b) => b[1].score - a[1].score);
 
     if (eligible.length > 0) {
