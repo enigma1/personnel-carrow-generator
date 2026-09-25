@@ -1,10 +1,11 @@
 import type { Role } from '>/types';
 
-const roles: Role[] = [
+export const rolesList: Role[] = [
   {
     id: 'hvac',
     title: 'HV Authorised Person (Offshore)',
     vacancies: 6,
+    schemes: ['HVAP', 'OSSC'],
     requirements: [
       {
         scheme_code: 'HVAP',
@@ -28,6 +29,7 @@ const roles: Role[] = [
     id: 'offshore-rotational',
     title: 'Offshore Rotational',
     vacancies: 40,
+    schemes: ['OSSC'],
     requirements: [
       {
         scheme_code: 'OSSC',
@@ -47,6 +49,7 @@ const roles: Role[] = [
     id: 'vhf-ops',
     title: 'Maritime Communications',
     vacancies: 5,
+    schemes: [],
     requirements: [
       // If there's a VHF/DSC scheme in your cert data, map it here.
       // If not, this is a manual check.
@@ -61,6 +64,7 @@ const roles: Role[] = [
     id: 'offshore-safety',
     title: 'Offshore Safety',
     vacancies: 1,
+    schemes: ['OSSC'],
     requirements: [
       {
         scheme_code: 'OSSC',
@@ -75,6 +79,7 @@ const roles: Role[] = [
     id: 'small-craft',
     title: 'Small Craft / Marine Ops',
     vacancies: 1,
+    schemes: ['SCMO'],
     requirements: [
       {
         scheme_code: 'SCMO',
@@ -89,6 +94,7 @@ const roles: Role[] = [
     id: 'general',
     title: 'General (autonomous problem-solving)',
     vacancies: 1,
+    schemes: [],
     requirements: [],
     manual_checks: ['General competence assessment'],
   },

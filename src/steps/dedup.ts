@@ -4,7 +4,7 @@
 import type { SequencerContext, RawRow, DuplicateKeepers } from '>/types';
 
 export const dedup = (ctx: SequencerContext) => {
-  console.log('step: dedup');
+  console.log('Step: dedup');
   const byName = new Map<string, { keeper: RawRow; indices: number[] }>();
   const byCode = new Map<string, { keeper: RawRow; indices: number[] }>();
   const dupes = new Map<string, DuplicateKeepers>();
@@ -43,9 +43,6 @@ export const dedup = (ctx: SequencerContext) => {
   ctx.keepers = [...byName.values()].map((e) => ({
     code: e.keeper.code,
     name: e.keeper.name,
-    era1: '',
-    era2: '',
-    era3: '',
   }));
 
   // Only keep groups that actually have >1 index

@@ -3,10 +3,9 @@ import {
   loadKeepersLogReference,
   dedup,
   writeInitialCsv,
-  loadKeepersLogBooks,
-  matchPresence,
   loadCourses,
   writeCoursesJoin,
+  scoreCompetence,
 } from '>/steps';
 
 const run = sequencer([
@@ -15,14 +14,16 @@ const run = sequencer([
   writeInitialCsv,
   loadCourses,
   writeCoursesJoin,
-  // loadKeepersLogBooks,
-  // matchPresence,
+  scoreCompetence,
 ]);
 
+// Dispatch Sequencer for main scenario
 const ctx = run({
   raw: [],
   courses: [],
   keepers: [],
+  schemes: [],
   duplicates: [],
+  roleScores: [],
   logbookTexts: {},
 });

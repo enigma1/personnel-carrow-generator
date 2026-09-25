@@ -4,6 +4,7 @@ import { stringify } from 'csv-stringify/sync';
 import type { SequencerContext, CourseRecord } from '>/types';
 
 export const writeCoursesJoin = (ctx: SequencerContext) => {
+  console.log('Step: writeCoursesJoin');
   const coursesByCode = new Map<string, CourseRecord[]>();
   for (const c of ctx.courses as CourseRecord[]) {
     const list = coursesByCode.get(c.keeper_code) ?? [];
@@ -45,6 +46,6 @@ export const writeCoursesJoin = (ctx: SequencerContext) => {
     stringify(rows, { header: true }),
   );
   console.log(
-    `[writeCoursesJoin] ${rows.length} rows, ${coursesByCode.size} keepers with courses`,
+    `-> ${rows.length} rows, ${coursesByCode.size} keepers with courses`,
   );
 };
