@@ -1,0 +1,29 @@
+{
+  "name": "personnel-carrow-generator",
+  "description": "Parsing, Extraction and Composition scripts of legacy data migration",
+  "version": "0.0.1",
+  "author": "Mark Samios",
+  "license": "GPL-3.0",
+  "type": "module",
+  "dependencies": {
+    "csv-parse": "^7.0.2",
+    "csv-stringify": "^6.8.3",
+    "iconv-lite": "^0.7.3",
+    "lodash-es": "^4.18.1",
+    "uuid": "^13.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^25.4.0",
+    "nodemon": "^3.1.14",
+    "tsc-alias": "^1.9.1",
+    "tsx": "^4.21.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/start.ts",
+    "build": "tsc && tsc-alias",
+    "start": "node dist/start.js",
+    "tsc": "tsc  --noEmit"
+  }
+}
