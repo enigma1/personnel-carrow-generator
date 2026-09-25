@@ -1,10 +1,10 @@
-/*  File: src/steps/02-dedup.ts
+/*  File: src/steps/dedup.ts
   Deduplicate keeper names and codes
 */
 import type { SequencerContext, RawRow, DuplicateKeepers } from '>/types';
 
 export const dedup = (ctx: SequencerContext) => {
-  console.log('[02] dedup');
+  console.log('step: dedup');
   const byName = new Map<string, { keeper: RawRow; indices: number[] }>();
   const byCode = new Map<string, { keeper: RawRow; indices: number[] }>();
   const dupes = new Map<string, DuplicateKeepers>();

@@ -1,5 +1,5 @@
-/* File 03-load-keepers-logbooks.ts
-  Processes the detailed log files
+/* File load-keepers-logbooks.ts
+  Processes the detailed raw log files
 */
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, extname } from 'node:path';
@@ -8,8 +8,8 @@ import { dataLocations } from '>/config';
 import type { SequencerContext } from '>/types';
 
 export const loadKeepersLogBooks = (ctx: SequencerContext) => {
-  for (const era of dataLocations.eraLogs) {
-    const dir = join(dataLocations.eraLogsPath, era);
+  for (const era of dataLocations.rawLogBooks) {
+    const dir = join(dataLocations.rawLogBooks, era);
     const files = readdirSync(dir).filter(
       (f) => f.endsWith('.txt') || f.endsWith('.csv') || f.endsWith('.dat'),
     );

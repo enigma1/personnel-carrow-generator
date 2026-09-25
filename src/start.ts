@@ -2,21 +2,26 @@ import { sequencer } from './sequencer';
 import {
   loadKeepersLogReference,
   dedup,
+  writeInitialCsv,
   loadKeepersLogBooks,
   matchPresence,
-  writeOutput,
+  loadCourses,
+  writeCoursesJoin,
 } from '>/steps';
 
 const run = sequencer([
   loadKeepersLogReference,
   dedup,
-  loadKeepersLogBooks,
-  matchPresence,
-  writeOutput,
+  writeInitialCsv,
+  loadCourses,
+  writeCoursesJoin,
+  // loadKeepersLogBooks,
+  // matchPresence,
 ]);
 
 const ctx = run({
   raw: [],
+  courses: [],
   keepers: [],
   duplicates: [],
   logbookTexts: {},

@@ -1,14 +1,12 @@
 import { loadEnvFile } from 'node:process';
 
 loadEnvFile();
-export const getEnvKey = (k: string) => process.env[k] ?? '';
+export const getEnvKey = (k: string) => process.env[k] ?? './tmp';
 
+const dataRoot = getEnvKey('DATA_PACK_ROOT');
 export const dataLocations = {
-  activePersonnel: getEnvKey('ACTIVE_PERSONNEL_FILE'),
-  eraLogsPath: getEnvKey('ERA_LOGS_PATH'),
-  eraLogs: [
-    // getEnvKey('ERA_LOG1'),
-    getEnvKey('ERA_LOG2'),
-    getEnvKey('ERA_LOG3'),
-  ],
+  dataRoot,
+  rawPersonnelReference: `${dataRoot}/raw/personnel/cla_personnel_export.csv`,
+  rawLastTraining: `${dataRoot}/raw/training/vendor-c-learnhub-2017-2026.json`,
+  rawLogBooks: `${dataRoot}/raw/personnel/logbooks`,
 };

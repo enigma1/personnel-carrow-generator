@@ -1,4 +1,4 @@
-/* File 01-load-keepers-log-reference.ts
+/* File load-keepers-log-reference.ts
   Loads the keepers reference file
 */
 import { readFileSync } from 'node:fs';
@@ -8,8 +8,8 @@ import { dataLocations } from '>/config';
 import { SequencerContext } from '>/types';
 
 export const loadKeepersLogReference = (ctx: SequencerContext) => {
-  console.log('[01] loadReference');
-  const buf: Buffer = readFileSync(dataLocations.activePersonnel);
+  console.log('Step: loadKeepersLogReference');
+  const buf: Buffer = readFileSync(dataLocations.rawPersonnelReference);
   const text: string = iconv.decode(buf, 'utf-8');
 
   const rows: string[][] = parse(text, {

@@ -1,4 +1,5 @@
-import { ActiveKeeperAssociations, DuplicateKeepers } from './tables';
+import type { ActiveKeeperAssociations, DuplicateKeepers } from './tables';
+import type { CourseRecord } from './courses';
 
 export type RawRow = {
   code: string;
@@ -8,6 +9,7 @@ export type RawRow = {
 
 export type SequencerContext = {
   raw: RawRow[];
+  courses: CourseRecord[];
   keepers: ActiveKeeperAssociations[];
   duplicates: DuplicateKeepers[];
   logbookTexts: Record<string, string>;
