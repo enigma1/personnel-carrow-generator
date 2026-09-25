@@ -34,6 +34,7 @@ Find the most suitable keepers for the available roles in Carrowmore Array.
 - Referencing `raw/training/vendor-c-learnhub-2017-2026.json` and `employers/certification_schemes.json`
 - Generating score scripts where AI helpse generating code. Still unreliable, as it is uses elimination strategies and removing entries, I need to have all keeper codes with scores as it is unknown how many will agree to new roles. And also secondary factors from raw data might influence the score later on.
 - I created types for roles based on the new job listings under the `src/contracts/roles.ts` and `src/types/roles.ts`. Put AI to generate score calculations but it ignore keepers past experience at multiple levels. I need to rethink the prompts and include secondary data from raw folders if time permits. I may use the clean data to get around time constraints.
+- I manage to add all necessary steps to the sequencer for a rough calculation based on the keepers, courses attended and marks obtained. The output gives an order of potential keepers. The next thing I need to work on is fix bugs on for the different skills on the final `ranked.csv` and then add different scenarios taking into account the older activity logs of keeper to have a fair judgment.
 
 #### Other Notes
 

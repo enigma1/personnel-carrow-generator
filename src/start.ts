@@ -6,6 +6,9 @@ import {
   loadCourses,
   writeCoursesJoin,
   scoreCompetence,
+  rankAll,
+  assignRoles,
+  writeFinalCsv,
 } from '>/steps';
 
 const run = sequencer([
@@ -15,6 +18,9 @@ const run = sequencer([
   loadCourses,
   writeCoursesJoin,
   scoreCompetence,
+  rankAll,
+  assignRoles,
+  writeFinalCsv,
 ]);
 
 // Dispatch Sequencer for main scenario
@@ -22,8 +28,9 @@ const ctx = run({
   raw: [],
   courses: [],
   keepers: [],
-  schemes: [],
-  duplicates: [],
+  roles: [],
   roleScores: [],
-  logbookTexts: {},
+  duplicates: [],
+  ranked: [],
+  assignments: [],
 });

@@ -7,10 +7,11 @@ import { stringify } from 'csv-stringify/sync';
 import type { SequencerContext } from '>/types';
 
 export const writeInitialCsv = (ctx: SequencerContext) => {
+  console.log('Step: writeInitialCsv');
   mkdirSync('./data', { recursive: true });
 
   const rows = ctx.keepers.map((k) => ({
-    code: k.code,
+    keeper_code: k.keeper_code,
     name: k.name,
     score: '',
   }));

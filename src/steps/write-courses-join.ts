@@ -12,13 +12,13 @@ export const writeCoursesJoin = (ctx: SequencerContext) => {
     coursesByCode.set(c.keeper_code, list);
   }
 
-  const rows: Omit<CourseRecord, 'employee_ref'>[] = [];
+  const rows: Omit<CourseRecord, 'id' | 'employee_ref'>[] = [];
 
   for (const k of ctx.keepers) {
-    const records = coursesByCode.get(k.code) ?? [];
+    const records = coursesByCode.get(k.keeper_code) ?? [];
     if (records.length === 0) {
       rows.push({
-        keeper_code: k.code,
+        keeper_code: k.keeper_code,
         course_id: '',
         title: '',
         scheme_module: '',
@@ -29,7 +29,7 @@ export const writeCoursesJoin = (ctx: SequencerContext) => {
     } else {
       for (const c of records) {
         rows.push({
-          keeper_code: k.code,
+          keeper_code: k.keeper_code,
           course_id: c.course_id,
           title: c.title,
           scheme_module: c.scheme_module,
@@ -44,8 +44,5 @@ export const writeCoursesJoin = (ctx: SequencerContext) => {
   writeFileSync(
     './data/keepers_courses.csv',
     stringify(rows, { header: true }),
-  );
-  console.log(
-    `-> ${rows.length} rows, ${coursesByCode.size} keepers with courses`,
   );
 };

@@ -3,6 +3,11 @@
 */
 import type { CourseOutcome } from './courses';
 
+export type RoleScoreEntry = {
+  score: number;
+  met: boolean;
+};
+
 export type RoleRequirement = {
   scheme_code: string; // matches CertificationsScheme.code
   modules_required: string[]; // specific module codes, or [] for "all modules"

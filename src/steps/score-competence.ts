@@ -21,7 +21,7 @@ export const scoreCompetence = (ctx: SequencerContext) => {
   }
 
   ctx.roleScores = ctx.keepers.map((k) => {
-    const keeperCourses = coursesByCode.get(k.code) ?? [];
+    const keeperCourses = coursesByCode.get(k.keeper_code) ?? [];
     const roleResults: Record<string, RoleResults> = {};
 
     for (const role of roles) {
@@ -68,6 +68,6 @@ export const scoreCompetence = (ctx: SequencerContext) => {
       roleResults[role.id] = { score, met: allMet };
     }
 
-    return { code: k.code, name: k.name, roles: roleResults };
+    return { keeper_code: k.keeper_code, name: k.name, roles: roleResults };
   });
 };

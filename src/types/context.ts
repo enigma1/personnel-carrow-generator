@@ -1,9 +1,15 @@
-import type { ActiveKeeperAssociations, DuplicateKeepers } from './tables';
+import type {
+  KeeperRank,
+  KeeperAssignment,
+  ActiveKeeperAssociations,
+  DuplicateKeepers,
+  KeeperRoleScores,
+} from './keeper';
 import type { CourseRecord } from './courses';
 import type { Role } from './roles';
 
 export type RawRow = {
-  code: string;
+  keeper_code: string;
   name: string;
   idx: number;
 };
@@ -11,10 +17,11 @@ export type RawRow = {
 export type SequencerContext = {
   raw: RawRow[];
   courses: CourseRecord[];
-  schemes: Role[];
+  roles: Role[];
+  roleScores: KeeperRoleScores[];
   keepers: ActiveKeeperAssociations[];
   duplicates: DuplicateKeepers[];
-  logbookTexts: Record<string, string>;
-  eraStrategies?: Record<string, 'code' | 'both'>;
+  ranked: KeeperRank[];
+  assignments: KeeperAssignment[];
   [key: string]: unknown;
 };

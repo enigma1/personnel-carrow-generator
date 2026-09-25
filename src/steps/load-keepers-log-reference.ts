@@ -17,9 +17,9 @@ export const loadKeepersLogReference = (ctx: SequencerContext) => {
     skip_empty_lines: true,
   });
 
-  const raw: { code: string; name: string; idx: number }[] = rows.map(
+  const raw: { keeper_code: string; name: string; idx: number }[] = rows.map(
     (row, i) => ({
-      code: row[0] ?? 'Not Found',
+      keeper_code: row[0] ?? 'Not Found',
       name: row[1] ?? 'Not Found',
       idx: i,
     }),

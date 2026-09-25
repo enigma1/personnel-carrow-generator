@@ -19,21 +19,21 @@ export const dedup = (ctx: SequencerContext) => {
     }
 
     // Track by code
-    const codeEntry = byCode.get(row.code);
+    const codeEntry = byCode.get(row.keeper_code);
     if (codeEntry) {
       codeEntry.indices.push(row.idx);
     } else {
-      byCode.set(row.code, { keeper: row, indices: [row.idx] });
+      byCode.set(row.keeper_code, { keeper: row, indices: [row.idx] });
     }
 
     // Collect duplicate groups (key = name+code combo)
-    const key = `${row.name}::${row.code}`;
+    const key = `${row.name}::${row.keeper_code}`;
     const existing = dupes.get(key);
     if (existing) {
       existing.indices.push(row.idx);
     } else if (nameEntry && nameEntry.indices.length > 1) {
       dupes.set(key, {
-        code: row.code,
+        keeper_code: row.keeper_code,
         name: row.name,
         indices: [...nameEntry.indices],
       });
@@ -41,7 +41,7 @@ export const dedup = (ctx: SequencerContext) => {
   }
 
   ctx.keepers = [...byName.values()].map((e) => ({
-    code: e.keeper.code,
+    keeper_code: e.keeper.keeper_code,
     name: e.keeper.name,
   }));
 
